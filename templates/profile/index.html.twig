@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ asset('styles/navbar.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('styles/main.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('styles/profile.css') }}"/>
+    <script type="text/javascript" src="{{ asset('js/navbar.js') }}" defer></script>
+    {{ encore_entry_script_tags('UserProfile') }}
+    <title>Document</title>
+</head>
+<body>
+{% include 'navbar.html.twig' %}
+<div class="profile-main">
+    <div class="profile-panels">
+        <div class="profile-panel">
+
+        </div>
+
+    </div>
+
+</div>
+
+
+</body>
+</html>

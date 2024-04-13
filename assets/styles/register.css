@@ -1,0 +1,150 @@
+.logo {
+    margin: 2rem;
+    flex-grow: 1;
+}
+
+.logo img {
+    width: 100%;
+}
+
+
+.container {
+    display: flex;
+}
+
+.login-text {
+    color: #9b734f;
+    font-size: 2em;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.login-main {
+    width: 27em;
+    height: 25em;
+    margin: 10% 10% 0 5%;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 2;
+}
+
+.login-panel {
+    border-radius: 2.65rem;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-panel form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 95%;
+}
+
+.login-button {
+    height: 4em;
+    flex-shrink: 0;
+    background: linear-gradient(90deg,
+    #9b734f 5.41%,
+    #9b734f 47.9%,
+    #9b734f 90.81%);
+    border: none;
+    border-radius: 2.65rem;
+    margin: 1em 2em 2em 2em;
+    color: #fff;
+    text-align: center;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.login-register {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2em;
+}
+
+.login-email,
+.login-password,
+.login-name,
+.login-phone {
+    display: flex;
+    margin: 2em 1em 1em 1em;
+}
+
+input {
+    border: 0;
+    padding-left: 1em;
+}
+
+a:link,
+a:visited {
+    text-decoration: none;
+    color: #9b734f;
+    text-align: center;
+    font-size: 1.2rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding: 0.5rem;
+}
+
+.line {
+    background: #c4c4c4;
+    width: 0.09175rem;
+    height: 2.43081rem;
+}
+
+@media screen and (max-width: 800px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .logo {
+        text-align: center;
+        height: 0.5em;
+        margin-bottom: 2em;
+    }
+
+    .logo img {
+        width: 70%;
+        margin: 0 auto;
+        justify-content: center;
+    }
+
+    .login-main {
+        margin: auto;
+        width: 27em;
+        height: 22em;
+    }
+
+    .login-text {
+        margin-top: 2em;
+        margin-bottom: 1em;
+        font-size: 1.5em;
+    }
+
+    .login-email,
+    .login-password,
+    .login-name,
+    .login-phone {
+        display: flex;
+        margin: 2em 1em 1em 1em;
+    }
+}
+.no-valid {
+    border: 3px solid red;
+    border-radius: 1em;
+    box-shadow: 0 0 0.2em red;
+    outline: none;
+}
+.messages{
+    margin: 1em 1em 0 1em;
+    font-size: 1em;
+}

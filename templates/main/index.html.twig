@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ asset('styles/navbar.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('styles/main.css') }}"/>
+    <script type="text/javascript" src="{{ asset('js/navbar.js') }}" defer></script>
+    <script type="text/javascript" src="{{ asset('js/fetch.js') }}" defer></script>
+    <title>Document</title>
+</head>
+<body>
+{% include 'navbar.html.twig' %}
+<div class="welcome">
+    <p>Witaj uzytkowniku</p>
+</div>
+
+<div class="appointments">
+    <p class="upcoming-appointments">Nadchodzące wizyty:</p>
+
+
+            <div class="appointment">
+                <br>
+                <p>lek. dent. Jan Kowalski</p>
+                <a href="#">Odwołaj</a>
+            </div>
+
+
+
+</div>
+
+</body>
+</html>
