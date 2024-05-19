@@ -6,21 +6,17 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('styles/navbar.css') }}"/>
     <link rel="stylesheet" type="text/css" href="{{ asset('styles/main.css') }}"/>
     <script type="text/javascript" src="{{ asset('js/navbar.js') }}" defer></script>
+    {{ encore_entry_script_tags('PastAppointments') }}
     <title>Document</title>
 </head>
 <body>
 {% include 'navbar.html.twig' %}
 <div class="welcome">
-    <p>Witaj uzytkowniku</p>
+    <p>Witaj, {{ app.user.name }}</p>
 </div>
 
 <div class="appointments">
-    <p class="historical-appointments">Odbyte wizyty:</p>
 
-            <div class="appointment">
-                10.10.2024<br>
-                <p>lek. dent. <b>Jan Kowalski</b></p>
-            </div>
 </div>
 
 </body>

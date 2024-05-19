@@ -2,12 +2,16 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Metadata\ApiResource;
 use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\Table;
 use Doctrine\ORM\Mapping\Id;
 use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\GeneratedValue;
+use Doctrine\ORM\Mapping\ManyToOne;
+use Doctrine\ORM\Mapping\JoinColumn;
 
+#[ApiResource]
 #[Entity]
 #[Table(name: "appointments")]
 class Appointment
@@ -17,11 +21,13 @@ class Appointment
     #[Column(type: "integer")]
     private $id;
 
-    #[Column(type: "integer")]
-    private $doctor_id;
+    #[ManyToOne(targetEntity: Doctor::class)]
+    #[JoinColumn(name: "doctor_id", referencedColumnName: "id")]
+    private $doctor;
 
-    #[Column(type: "integer", nullable: true)]
-    private $patient_id;
+    #[ManyToOne(targetEntity: User::class)]
+    #[JoinColumn(name: "user_id", referencedColumnName: "id", nullable: true)]
+    private $user;
 
     #[Column(type: "datetime")]
     private $date;
@@ -29,53 +35,56 @@ class Appointment
     #[Column(type: "string", length: 255)]
     private $status;
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function setId($id): void
+    public function getDoctor(): ?Doctor
     {
-        $this->id = $id;
+        return $this->doctor;
     }
 
-    public function getDoctorId()
+    public function setDoctor(?Doctor $doctor): self
     {
-        return $this->doctor_id;
+        $this->doctor = $doctor;
+
+        return $this;
     }
 
-    public function setDoctorId($doctor_id): void
+    public function getUser(): ?User
     {
-        $this->doctor_id = $doctor_id;
+        return $this->user;
     }
 
-    public function getPatientId()
+    public function setUser(?User $user): self
     {
-        return $this->patient_id;
+        $this->user = $user;
+
+        return $this;
     }
 
-    public function setPatientId($patient_id): void
-    {
-        $this->patient_id = $patient_id;
-    }
-
-    public function getDate()
+    public function getDate(): ?\DateTimeInterface
     {
         return $this->date;
     }
 
-    public function setDate($date): void
+    public function setDate(\DateTimeInterface $date): self
     {
         $this->date = $date;
+
+        return $this;
     }
 
-    public function getStatus()
+    public function getStatus(): ?string
     {
         return $this->status;
     }
 
-    public function setStatus($status): void
+    public function setStatus(string $status): self
     {
         $this->status = $status;
+
+        return $this;
     }
 }
