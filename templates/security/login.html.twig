@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="{{ asset('styles/main.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('styles/login.css') }}"/>
+</head>
+
+<body>
+<div class="container">
+    <div class="logo">
+        <img src="{{ asset('images/logo.png') }}" alt="logo" />
+    </div>
+
+    <div class="login-main">
+        <div class="login-text">Logowanie</div>
+        <div class="login-panel">
+            <div class="messages">
+                {% if messages is defined %}
+                    {% for message in messages %}
+                        {{ message }}
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <form action="{{ path('app_login') }}" method="POST">
+                <div class="login-email">
+                    <label for="email"><img src="{{ asset('images/Vector.png') }}" alt="" /></label>
+                    <input type="text" id="username" name="_username" placeholder="Email" required />
+                </div>
+                <hr />
+                <div class="login-password">
+                    <label for="password"><img src="{{ asset('images/Union.svg') }}" alt="union" /></label>
+                    <input type="password" id="password" name="_password" placeholder="Hasło" required />
+                </div>
+                <hr />
+
+                <button type="submit" class="login-button">Zaloguj</button>
+            </form>
+            <div class="login-register">
+                Nie masz konta? <span><a href="{{ path('app_register') }}">Zarejestruj się</a></span>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

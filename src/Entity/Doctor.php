@@ -2,14 +2,18 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Metadata\ApiResource;
 use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\Table;
 use Doctrine\ORM\Mapping\Id;
 use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\GeneratedValue;
+use Doctrine\ORM\Mapping\ManyToOne;
+use Doctrine\ORM\Mapping\JoinColumn;
 
 #[Entity]
 #[Table(name: "doctors")]
+#[ApiResource]
 class Doctor
 {
     #[Id]
@@ -17,8 +21,9 @@ class Doctor
     #[Column(type: "integer")]
     private $id;
 
-    #[Column(type: "integer")]
-    private $user_id;
+    #[ManyToOne(targetEntity: User::class)]
+    #[JoinColumn(name: "user_id", referencedColumnName: "id")]
+    private $user;
 
     public function getId()
     {
@@ -30,13 +35,17 @@ class Doctor
         $this->id = $id;
     }
 
-    public function getUserId()
+    public function getUser(): User
     {
-        return $this->user_id;
+        return $this->user;
     }
 
-    public function setUserId($user_id): void
+    public function setUser(User $user): void
     {
-        $this->user_id = $user_id;
+        $this->user = $user;
+    }
+    public function getUserDetails(): UserDetails
+    {
+        return $this->getUser()->getUserDetails();
     }
 }

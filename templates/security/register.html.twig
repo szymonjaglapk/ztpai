@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('styles/main.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('styles/register.css') }}">
+    <title>Document</title>
+
+</head>
+
+<body>
+<div class="container">
+    <div class="logo">
+        <img src="{{ asset('images/logo.png') }}" alt="logo" />
+    </div>
+
+    <div class="login-main">
+        <div class="login-text">Rejestracja</div>
+        <div class="login-panel">
+            <div class="messages">
+                {% if messages is defined %}
+                    {% for message in messages %}
+                        {{ message }}
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <form action="{{ path('app_register') }}" method="POST">
+                <div class="login-name">
+                    <img src="{{ asset('images/name.svg') }}" alt="" />
+                    <input type="text" id="name" name="name" placeholder="Imię" required />
+                    <div class="line"></div>
+                    <input type="text" id="surname" name="surname" placeholder="Nazwisko" required />
+                </div>
+                <hr />
+                <div class="login-email">
+                    <label for="email"><img src="{{ asset('images/Vector.png') }}" alt="" /></label>
+                    <input type="text" id="email" name="email" placeholder="Email" required />
+                </div>
+                <hr />
+                <div class="login-phone">
+                    <label for="phone"><img src="{{ asset('images/telefon.svg') }}" alt="" /></label>
+                    <input type="tel" id="phone" name="phone" pattern="[0-9]{9}" placeholder="Telefon" required />
+                </div>
+
+                <hr />
+                <div class="login-password">
+                    <label for="password"><img src="{{ asset('images/Union.svg') }}" alt="union" /></label>
+                    <input type="password" id="password" name="password" placeholder="Hasło" required />
+                    <input type="password" id="confirmedPassword" name="confirmedPassword" placeholder="Potwierdź hasło" required />
+                </div>
+                <hr />
+
+                <button type="submit" class="login-button">Gotowe</button>
+            </form>
+            <div class="login-register">
+                <p>
+                    Masz już konto? <span><a href="{{ path('app_login') }}">Zaloguj się</a></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
