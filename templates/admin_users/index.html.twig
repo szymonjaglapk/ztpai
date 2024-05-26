@@ -6,18 +6,19 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('styles/navbar.css') }}"/>
     <link rel="stylesheet" type="text/css" href="{{ asset('styles/main.css') }}"/>
     <script type="text/javascript" src="{{ asset('js/navbar.js') }}" defer></script>
-    {{ encore_entry_script_tags('PastAppointments') }}
+    {{ encore_entry_script_tags('AdminUsers') }}
     <title>Document</title>
 </head>
 <body>
-{% include 'navbar.html.twig' %}
+{% include 'admin_navbar.html.twig' %}
 <div class="welcome">
-    <p>Witaj, {{ app.user.name }}</p>
+    <p>Admin Panel</p>
+</div>
+<div class="users">
+
 </div>
 
-<div class="appointments">
 
-</div>
 
 </body>
 </html>

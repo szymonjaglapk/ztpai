@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('styles/admin.css') }}"/>
     <script type="text/javascript" src="{{ asset('js/navbar.js') }}" defer></script>
     <script type="text/javascript" src="{{ asset('js/fetch.js') }}" defer></script>
+    {{ encore_entry_script_tags('ReserveForm') }}
     <title>Document</title>
 </head>
 
@@ -15,41 +16,7 @@
 {% include 'navbar.html.twig' %}
 <div class="container">
 
-    <div class="login-main">
-        <div class="login-panel">
-            <div class="messages">
-                {% for message in app.flashes('notice') %}
-                    {{ message }}
-                {% endfor %}
-            </div>
-            <form action="#" method="POST">
-                <label for="doctor">Lekarz:</label>
-                <select id="doctor" name="doctor" required>
-                    <option value="all">Wszyscy</option>
-                        <option value="#">lek. dent. <b>Jan Kowalski</b></option>
-                </select>
-                <hr />
 
-                <label for="date_from">Data od:</label>
-                <input type="date" id="date_from" name="date_from" required min="{{ 'now'|date('Y-m-d') }}" />
-                <hr />
-
-                <label for="date_to">Data do:</label>
-                <input type="date" id="date_to" name="date_to" required min="{{ 'now'|date('Y-m-d') }}" />
-                <hr />
-
-                <button type="submit" class="login-button">Wyszukaj</button>
-            </form>
-
-        </div>
-
-                <div class="appointment">
-                    <p>10.10.2024</p>
-                    <p>Jan Kowalski</p>
-                    <a href="#">Rezerwuj</a>
-                </div>
-
-    </div>
 </div>
 </body>
 

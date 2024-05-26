@@ -14,7 +14,7 @@ body {
     #fff 15.28%,
     rgba(155, 115, 79, 0.96) 100%);
 }
-.appointments{
+.appointments, .users{
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -26,7 +26,7 @@ body {
     overflow-y: scroll;
 
 }
-.appointment{
+.appointment, .user{
     background-color: white;
     display: flex;
     align-items: center;
@@ -67,14 +67,14 @@ body {
     color: grey;
 }
 @media screen and (max-width: 800px) {
-    .appointments{
+    .appointments, .users{
         padding-left: 0;
         margin: auto;
         font-size: 1.25em;
         width: 80vw;
 
     }
-    .appointment{
+    .appointment, .user{
         width: 60vw;
 
     }

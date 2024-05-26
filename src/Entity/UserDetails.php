@@ -2,18 +2,27 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Metadata\ApiResource;
 use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\Table;
 use Doctrine\ORM\Mapping\Id;
 use Doctrine\ORM\Mapping\Column;
+use Doctrine\ORM\Mapping\OneToOne;
+use Doctrine\ORM\Mapping\JoinColumn;
+use Doctrine\ORM\Mapping\GeneratedValue;
 
 #[Entity]
 #[Table(name: "user_details")]
+#[ApiResource]
 class UserDetails
 {
     #[Id]
+    #[GeneratedValue]
     #[Column(type: "integer")]
-    private $user_id;
+    private int $id;
+    #[OneToOne(targetEntity: User::class, inversedBy: "userDetails")]
+    #[JoinColumn(name: "user_id", referencedColumnName: "id")]
+    private User $user;
 
     #[Column(type: "string", length: 255)]
     private $name;
@@ -24,14 +33,14 @@ class UserDetails
     #[Column(type: "string", length: 255)]
     private $phone;
 
-    public function getUserId()
+    public function getUser()
     {
-        return $this->user_id;
+        return $this->user;
     }
 
-    public function setUserId($user_id): void
+    public function setUser($user): void
     {
-        $this->user_id = $user_id;
+        $this->user= $user;
     }
 
     public function getName()
@@ -62,5 +71,9 @@ class UserDetails
     public function setPhone($phone): void
     {
         $this->phone = $phone;
+    }
+    public function getId(): int
+    {
+        return $this->getUser()->getId();
     }
 }
