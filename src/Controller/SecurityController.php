@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Entity\UserDetails;
+use App\Service\LoggerService;
 use DateTime;
 use LogicException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -16,16 +17,24 @@ use Doctrine\ORM\EntityManagerInterface;
 
 class SecurityController extends AbstractController
 {
+    private $loggerService;
+
+    public function __construct(LoggerService $loggerService)
+    {
+        $this->loggerService = $loggerService;
+    }
     #[Route('/login', name: 'app_login', methods: ["GET", "POST"])]
     public function login(AuthenticationUtils $authenticationUtils, Request $request): Response
     {
+        $error = $authenticationUtils->getLastAuthenticationError();
+        $lastUsername = $authenticationUtils->getLastUsername();
         if ($request->isMethod('POST')) {
+            $this->loggerService->log('info', 'User logged in: ' . $lastUsername);
             throw new LogicException('This should never be reached!');
         }
 
 
-        $error = $authenticationUtils->getLastAuthenticationError();
-        $lastUsername = $authenticationUtils->getLastUsername();
+
 
         return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
     }
